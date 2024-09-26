@@ -344,29 +344,31 @@ const App: React.FC = () => {
             リセット
           </button>
           {/* PDFダウンロードリンク */}
-          <PDFDownloadLink
-            document={
-              <PdfDoc
-                案件内容={案件内容}
-                案件詳細={案件詳細}
-                期間={期間}
-                場所={場所}
-                勤務時間={勤務時間}
-                精算幅={精算幅}
-                作業工程={作業工程}
-                スキル={スキル}
-                人数={人数}
-                備考={備考}
-                memo1={memo1}
-                memo2={memo2}
-                memo3={memo3}
-                memo4={memo4}
-              />
-            }
-            fileName="面談シート.pdf"
-          >
-            {({ loading }) => (loading ? "PDFを生成中..." : "PDF保存")}
-          </PDFDownloadLink>
+          {typeof window !== "undefined" && (
+            <PDFDownloadLink
+              document={
+                <PdfDoc
+                  案件内容={案件内容}
+                  案件詳細={案件詳細}
+                  期間={期間}
+                  場所={場所}
+                  勤務時間={勤務時間}
+                  精算幅={精算幅}
+                  作業工程={作業工程}
+                  スキル={スキル}
+                  人数={人数}
+                  備考={備考}
+                  memo1={memo1}
+                  memo2={memo2}
+                  memo3={memo3}
+                  memo4={memo4}
+                />
+              }
+              fileName="面談シート.pdf"
+            >
+              {({ loading }) => (loading ? "PDFを生成中..." : "PDF保存")}
+            </PDFDownloadLink>
+          )}
         </div>
       </div>
     </div>
