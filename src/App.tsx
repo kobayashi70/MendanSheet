@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import PdfDoc from "./PdfDoc";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import { pdf } from "@react-pdf/renderer";
 import TimeSelector from "./TimeSelecter";
 import SeisanHaba from "./SeisanHaba";
 
@@ -161,6 +161,35 @@ const App: React.FC = () => {
       setFileName(null);
       localStorage.clear();
     }
+  };
+
+  const handleDownloadPdf = async () => {
+    const blob = await pdf(
+      <PdfDoc
+        案件内容={案件内容}
+        案件詳細={案件詳細}
+        期間={期間}
+        場所={場所}
+        勤務時間={勤務時間}
+        精算幅={精算幅}
+        作業工程={作業工程}
+        スキル={スキル}
+        人数={人数}
+        備考={備考}
+        memo1={memo1}
+        memo2={memo2}
+        memo3={memo3}
+        memo4={memo4}
+      />
+    ).toBlob(); // PDFをBlobとして取得
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "面談シート.pdf");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -340,35 +369,13 @@ const App: React.FC = () => {
         </div>
 
         <div className="input-section">
-          <button className="reset-btn" onClick={handleReset}>
+          <button className="btn" onClick={handleReset}>
             リセット
           </button>
-          {/* PDFダウンロードリンク */}
-          {typeof window !== "undefined" && (
-            <PDFDownloadLink
-              document={
-                <PdfDoc
-                  案件内容={案件内容}
-                  案件詳細={案件詳細}
-                  期間={期間}
-                  場所={場所}
-                  勤務時間={勤務時間}
-                  精算幅={精算幅}
-                  作業工程={作業工程}
-                  スキル={スキル}
-                  人数={人数}
-                  備考={備考}
-                  memo1={memo1}
-                  memo2={memo2}
-                  memo3={memo3}
-                  memo4={memo4}
-                />
-              }
-              fileName="面談シート.pdf"
-            >
-              {({ loading }) => (loading ? "PDFを生成中..." : "PDF保存")}
-            </PDFDownloadLink>
-          )}
+          {/* PDFダウンロードボタン */}
+          <button className="btn" onClick={handleDownloadPdf}>
+            PDF保存
+          </button>
         </div>
       </div>
     </div>
