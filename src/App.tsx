@@ -335,7 +335,9 @@ const App: React.FC = () => {
         <div className="memo-section">
           <h2>メモ</h2>
           <div className="memo-wrap">
-            <label htmlFor="memo1">事前に喋ること</label>
+            <label htmlFor="memo1">
+              事前に喋ること（簡潔にまとめてハキハキ喋れるように準備！）
+            </label>
             <textarea
               id="memo1"
               value={memo1}
@@ -343,7 +345,9 @@ const App: React.FC = () => {
             />
           </div>
           <div className="memo-wrap">
-            <label htmlFor="memo2">説明で気になったこと</label>
+            <label htmlFor="memo2">
+              説明で気になったこと（小さなことでも書いておこう！入ってからのすれ違い対策！）
+            </label>
             <textarea
               id="memo2"
               value={memo2}
@@ -351,7 +355,9 @@ const App: React.FC = () => {
             />
           </div>
           <div className="memo-wrap">
-            <label htmlFor="memo2">受けた質問</label>
+            <label htmlFor="memo2">
+              受けた質問（何を聞かれたかメモしよう！次に活かしていこう！）
+            </label>
             <textarea
               id="memo3"
               value={memo3}
@@ -359,7 +365,9 @@ const App: React.FC = () => {
             />
           </div>
           <div className="memo-wrap">
-            <label htmlFor="memo4">逆質問</label>
+            <label htmlFor="memo4">
+              逆質問（事前情報で確認したいことや当日気になったことを聞こう！）
+            </label>
             <textarea
               id="memo4"
               value={memo4}
