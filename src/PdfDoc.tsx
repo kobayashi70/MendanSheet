@@ -59,11 +59,11 @@ Font.register({
   family: "NotoSansJP",
   fonts: [
     {
-      src: "src/assets/fonts/NotoSansJP-Bold.ttf",
+      src: "/NotoSansJP-Bold.ttf",
       fontWeight: "bold",
     },
     {
-      src: "src/assets/fonts/NotoSansJP-Regular.ttf",
+      src: "/NotoSansJP-Regular.ttf",
     },
   ],
 });
